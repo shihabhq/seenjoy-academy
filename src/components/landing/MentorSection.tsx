@@ -23,8 +23,8 @@ export default function MentorSection() {
       <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
         {/* Image placeholder */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="flex-shrink-0"
@@ -36,8 +36,8 @@ export default function MentorSection() {
 
         {/* Info */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex-1"
@@ -51,8 +51,8 @@ export default function MentorSection() {
             {MENTOR_INFO.credentials.map((credential, index) => (
               <motion.li
                 key={index}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
                 className="flex items-start gap-3"

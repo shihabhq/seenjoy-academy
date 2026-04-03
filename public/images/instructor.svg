@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="580" viewBox="0 0 480 580" fill="none">
+  <!-- Background -->
+  <rect width="480" height="580" fill="#111118"/>
+  <!-- Subtle radial glow -->
+  <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+    <stop offset="0%" stop-color="#F5A623" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#0A0A0F" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="480" height="580" fill="url(#glow)"/>
+  <!-- Stage floor gradient -->
+  <linearGradient id="floor" x1="0" y1="400" x2="0" y2="580" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#1A1A24"/>
+    <stop offset="100%" stop-color="#0A0A0F"/>
+  </linearGradient>
+  <rect y="400" width="480" height="180" fill="url(#floor)"/>
+  <!-- Body silhouette -->
+  <!-- Head -->
+  <circle cx="240" cy="170" r="72" fill="#1A1A24" stroke="#2A2A35" stroke-width="1.5"/>
+  <!-- Neck -->
+  <rect x="218" y="234" width="44" height="36" rx="8" fill="#1A1A24"/>
+  <!-- Shoulders / torso -->
+  <path d="M100 580 C100 440 160 360 240 355 C320 360 380 440 380 580Z" fill="#1A1A24" stroke="#2A2A35" stroke-width="1.5"/>
+  <!-- Suit jacket lines -->
+  <path d="M240 355 L200 580" stroke="#2A2A35" stroke-width="1"/>
+  <path d="M240 355 L280 580" stroke="#2A2A35" stroke-width="1"/>
+  <!-- Microphone in hand area -->
+  <rect x="310" y="430" width="16" height="50" rx="8" fill="#F5A623" opacity="0.5"/>
+  <circle cx="318" cy="424" r="14" fill="#F5A623" opacity="0.4" stroke="#F5A623" stroke-width="1.5"/>
+  <!-- Face features (minimal) -->
+  <!-- Eyes -->
+  <ellipse cx="218" cy="162" rx="8" ry="9" fill="#2A2A35"/>
+  <ellipse cx="262" cy="162" rx="8" ry="9" fill="#2A2A35"/>
+  <!-- Smile -->
+  <path d="M220 196 Q240 212 260 196" stroke="#2A2A35" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- Spotlight from top -->
+  <radialGradient id="spot" cx="50%" cy="0%" r="70%">
+    <stop offset="0%" stop-color="#F5A623" stop-opacity="0.12"/>
+    <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
+  </radialGradient>
+  <ellipse cx="240" cy="0" rx="200" ry="200" fill="url(#spot)"/>
+  <!-- Replace text -->
+  <text x="240" y="530" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#2A2A35" letter-spacing="2">INSTRUCTOR PHOTO</text>
+  <text x="240" y="550" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#2A2A35">Replace with /public/images/instructor.jpg</text>
+</svg>
