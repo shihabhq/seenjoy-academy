@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/generated/prisma";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const globalForPrisma = globalThis as unknown as {
@@ -9,8 +9,6 @@ function createPrismaClient() {
   const databaseUrl = process.env.DATABASE_URL;
 
   if (!databaseUrl) {
-    // Return a client without adapter for build-time type inference
-    // This will throw at runtime if DATABASE_URL is not set
     return new PrismaClient();
   }
 
