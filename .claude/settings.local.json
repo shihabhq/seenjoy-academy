@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npx prisma:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node -e \"const l = require\\(''lucide-react''\\); console.log\\(Object.keys\\(l\\).filter\\(k => /tube|face|book|insta|social/i.test\\(k\\)\\)\\)\")",
+      "Bash(npm run:*)"
+    ]
+  }
+}

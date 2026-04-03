@@ -1,0 +1,69 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { CheckCircle, User } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { MENTOR_INFO, SECTIONS } from "@/lib/constants";
+
+export default function MentorSection() {
+  return (
+    <section id="mentor" className="py-20 md:py-28 max-w-6xl mx-auto px-4 md:px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <SectionHeading
+          title={SECTIONS.mentor.title}
+          subtitle={SECTIONS.mentor.subtitle}
+        />
+      </motion.div>
+
+      <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        {/* Image placeholder */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex-shrink-0"
+        >
+          <div className="w-56 h-56 md:w-64 md:h-64 rounded-full bg-bg-tertiary border-4 border-accent-gold/50 flex items-center justify-center shadow-[0_0_40px_rgba(245,166,35,0.15)]">
+            <User className="w-24 h-24 text-text-secondary/40" />
+          </div>
+        </motion.div>
+
+        {/* Info */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex-1"
+        >
+          <h3 className="text-3xl font-bold text-text-primary mb-2">
+            {MENTOR_INFO.name}
+          </h3>
+          <p className="text-accent-gold font-medium mb-6">{MENTOR_INFO.tagline}</p>
+
+          <ul className="space-y-4">
+            {MENTOR_INFO.credentials.map((credential, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                className="flex items-start gap-3"
+              >
+                <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-text-secondary leading-relaxed">{credential}</span>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
