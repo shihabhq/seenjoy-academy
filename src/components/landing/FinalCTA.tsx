@@ -7,7 +7,7 @@ import { SECTIONS, COURSE_INFO } from "@/lib/constants";
 
 export default function FinalCTA() {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1a1040_0%,_#0A0A0F_70%)]" />
 

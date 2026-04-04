@@ -13,7 +13,7 @@ export default function MasterclassStructure() {
   return (
     <section
       id="curriculum"
-      className="py-20 md:py-28 bg-bg-secondary/30"
+      className="py-16 md:py-24 bg-bg-secondary/30"
     >
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <motion.div

@@ -7,7 +7,7 @@ import { MENTOR_INFO, SECTIONS } from "@/lib/constants";
 
 export default function MentorSection() {
   return (
-    <section id="mentor" className="py-20 md:py-28 max-w-6xl mx-auto px-4 md:px-6">
+    <section id="mentor" className="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,10 +42,10 @@ export default function MentorSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex-1"
         >
-          <h3 className="text-3xl font-bold text-text-primary mb-2">
+          <h3 className="text-3xl font-bold text-center md:text-left text-text-primary mb-2">
             {MENTOR_INFO.name}
           </h3>
-          <p className="text-accent-gold font-medium mb-6">{MENTOR_INFO.tagline}</p>
+          <p className="text-accent-gold text-center md:text-left font-medium mb-6">{MENTOR_INFO.tagline}</p>
 
           <ul className="space-y-4">
             {MENTOR_INFO.credentials.map((credential, index) => (
