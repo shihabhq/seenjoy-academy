@@ -7,7 +7,7 @@ import { FAQ_ITEMS, SECTIONS } from "@/lib/constants";
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-20 md:py-28 bg-bg-secondary/30">
+    <section id="faq" className="py-16 md:py-24 bg-bg-secondary/30">
       <div className="max-w-3xl mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

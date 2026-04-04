@@ -17,7 +17,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function WhatYouLearn() {
   return (
-    <section id="what-you-learn" className="py-20 md:py-28 max-w-6xl mx-auto px-4 md:px-6">
+    <section id="what-you-learn" className="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,13 +42,13 @@ export default function WhatYouLearn() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="h-full group hover:border-accent-gold/40 hover:shadow-[0_0_20px_rgba(245,166,35,0.08)] transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-accent-gold/10 flex items-center justify-center mb-4 group-hover:bg-accent-gold/20 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-accent-gold/10 mx-auto flex items-center justify-center mb-4 group-hover:bg-accent-gold/20 transition-colors">
                   <Icon className="w-6 h-6 text-accent-gold" />
                 </div>
-                <h3 className="text-text-primary font-semibold text-lg mb-2">
+                <h3 className="text-text-primary text-center font-semibold text-lg mb-2">
                   {outcome.title}
                 </h3>
-                <p className="text-text-secondary leading-relaxed">
+                <p className="text-text-secondary text-center leading-relaxed">
                   {outcome.description}
                 </p>
               </Card>

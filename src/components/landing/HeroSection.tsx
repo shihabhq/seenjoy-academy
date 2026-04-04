@@ -110,11 +110,11 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-12 items-center">
 
           {/* ── Left: Text ── */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
