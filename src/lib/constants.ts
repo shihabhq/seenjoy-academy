@@ -122,7 +122,7 @@ export const HERO = {
   description:
     "JOIN Speak To Win. মাত্র ২দিনের Live Zoom Class এর মাধ্যমে আপনে শিখবেন Public Speaking, Storytelling এবং Powerful Communication Techniques.",
   ctaText: "এখনই ভর্তি হোন",
-  urgency: "Limited Seats Available | Live Masterclass হওয়ায় সিট সংখ্যা সিমিত",
+  urgency: "Live Masterclass হওয়ায় সিট সংখ্যা সিমিত",
   videoLabel: "কোর্স প্রিভিউ ভিডিও",
 };
 
