@@ -9,7 +9,7 @@ export default function FinalCTA() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1a1040_0%,_#0A0A0F_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#0d4744_0%,_#031211_70%)]" />
 
       <div className="relative max-w-4xl mx-auto px-4 md:px-6 text-center">
         <motion.h2

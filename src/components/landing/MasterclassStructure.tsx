@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Pencil } from "lucide-react";
+import { Pencil, CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
@@ -51,7 +51,7 @@ export default function MasterclassStructure() {
                       key={topicIndex}
                       className="flex items-start gap-3 text-text-secondary"
                     >
-                      <span className="text-lg flex-shrink-0">{topic.emoji}</span>
+                      <CheckCircle className="w-4 h-4 text-accent-gold flex-shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{topic.text}</span>
                     </li>
                   ))}

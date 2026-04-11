@@ -1,4 +1,4 @@
-import { Calendar, Clock, Globe, User } from "lucide-react";
+import { Calendar, Clock, Globe, User, Mic } from "lucide-react";
 import Card from "@/components/ui/Card";
 import { COURSE_INFO } from "@/lib/constants";
 
@@ -8,7 +8,7 @@ export default function OrderSummary() {
       {/* Course thumbnail placeholder */}
       <div className="aspect-video rounded-xl bg-bg-tertiary border border-border-default flex items-center justify-center mb-5">
         <div className="text-center">
-          <div className="text-4xl mb-2">🎤</div>
+          <Mic className="w-10 h-10 text-accent-gold mx-auto mb-2" />
           <span className="text-text-secondary text-sm">Speak To Win</span>
         </div>
       </div>

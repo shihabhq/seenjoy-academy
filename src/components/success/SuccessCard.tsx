@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CheckCircle, Calendar, Clock, Monitor, Hash, Home } from "lucide-react";
+import { CheckCircle, Calendar, Clock, Monitor, Hash, Home, Mail } from "lucide-react";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { COURSE_INFO } from "@/lib/constants";
@@ -33,7 +33,7 @@ export default function SuccessCard({ order }: SuccessCardProps) {
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <h1 className="text-3xl font-bold text-text-primary mb-2">
-          🎉 ভর্তি নিশ্চিত হয়েছে!
+          ভর্তি নিশ্চিত হয়েছে!
         </h1>
         <p className="text-text-secondary mb-8">
           অভিনন্দন, {order.name}! আপনার পেমেন্ট সফলভাবে সম্পন্ন হয়েছে।
@@ -82,9 +82,10 @@ export default function SuccessCard({ order }: SuccessCardProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="bg-accent-gold/5 border border-accent-gold/20 rounded-xl p-4 mb-6 text-sm text-text-secondary"
+        className="bg-accent-gold/5 border border-accent-gold/20 rounded-xl p-4 mb-6 text-sm text-text-secondary flex items-start gap-3"
       >
-        📧 আপনার ইমেইলে ({order.email}) একটি নিশ্চিতকরণ পাঠানো হয়েছে। ক্লাসের আগের দিন Zoom লিংক পাঠানো হবে।
+        <Mail className="w-4 h-4 text-accent-gold flex-shrink-0 mt-0.5" />
+        <span>আপনার ইমেইলে ({order.email}) একটি নিশ্চিতকরণ পাঠানো হয়েছে। ক্লাসের আগের দিন Zoom লিংক পাঠানো হবে।</span>
       </motion.div>
 
       <motion.div
