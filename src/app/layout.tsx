@@ -15,11 +15,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Seenjoy Academy — Speak To Win | পাবলিক স্পিকিং মাস্টারক্লাস",
+  title: "Seenjoy Academy Speak To Win | পাবলিক স্পিকিং মাস্টারক্লাস",
   description:
     "Seenjoy Saha-র সাথে ২ দিনের লাইভ মাস্টারক্লাসে পাবলিক স্পিকিং শিখুন। আত্মবিশ্বাসী বক্তা হয়ে উঠুন মাত্র ৳৯৯৯-এ।",
   openGraph: {
-    title: "Speak To Win — পাবলিক স্পিকিং মাস্টারক্লাস",
+    title: "Speak To Win: পাবলিক স্পিকিং মাস্টারক্লাস",
     description:
       "Seenjoy Saha-র সাথে ২ দিনের লাইভ মাস্টারক্লাসে পাবলিক স্পিকিং শিখুন।",
     type: "website",

@@ -19,7 +19,7 @@ export default function Badge({
       className={cn(
         "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border",
         variant === "default"
-          ? "bg-bg-secondary border-border-default text-text-secondary"
+          ? "bg-bg-secondary border-border-default text-text-primary/75"
           : "bg-accent-gold/10 border-accent-gold/30 text-accent-gold",
         className
       )}

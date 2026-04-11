@@ -23,9 +23,9 @@ const sizeClasses: Record<ButtonSize, string> = {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent-gold text-text-on-accent font-semibold shadow-[0_0_20px_var(--accent-gold-glow)] hover:bg-accent-gold-hover",
+    "bg-gradient-to-r from-[#20b2aa] via-[#1a8e88] to-[#136b66] text-white font-semibold shadow-[0_0_24px_rgba(32,178,170,0.35)] hover:shadow-[0_0_32px_rgba(32,178,170,0.5)] hover:brightness-110",
   secondary:
-    "border border-accent-gold text-accent-gold bg-transparent hover:bg-accent-gold/10",
+    "border border-[#20b2aa] text-white bg-transparent hover:bg-[#20b2aa]/10",
 };
 
 export default function Button({

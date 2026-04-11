@@ -27,7 +27,7 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-text-secondary text-lg mb-8"
+          className="text-text-primary/75 text-lg mb-8"
         >
           {SECTIONS.finalCta.subtitle}
         </motion.p>
@@ -41,17 +41,17 @@ export default function FinalCTA() {
           className="mb-8 flex flex-col items-center gap-2"
         >
           <div className="flex items-center gap-4">
-            <span className="text-text-secondary line-through text-xl">
+            <span className="text-text-primary/50 line-through text-xl">
               ৳{COURSE_INFO.originalPrice}
             </span>
             <span className="bg-accent-gold text-text-on-accent px-3 py-1 rounded-full text-sm font-bold">
               {Math.round(((COURSE_INFO.originalPrice - COURSE_INFO.price) / COURSE_INFO.originalPrice) * 100)}% ছাড়
             </span>
           </div>
-          <div className="text-6xl font-bold text-accent-gold">
+          <div className="text-6xl font-bold text-white">
             ৳{COURSE_INFO.price}
           </div>
-          <p className="text-text-secondary text-sm">{SECTIONS.finalCta.currentPriceLabel}</p>
+          <p className="text-text-primary/70 text-sm">{SECTIONS.finalCta.currentPriceLabel}</p>
         </motion.div>
 
         <motion.div
