@@ -30,7 +30,7 @@ export default function MentorSection() {
           className="flex-shrink-0"
         >
           <div className="w-56 h-56 md:w-64 md:h-64 rounded-full bg-bg-tertiary border-4 border-accent-gold/50 flex items-center justify-center shadow-[0_0_40px_rgba(245,166,35,0.15)]">
-            <User className="w-24 h-24 text-text-secondary/40" />
+            <User className="w-24 h-24 text-accent-gold/40" />
           </div>
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function MentorSection() {
                 className="flex items-start gap-3"
               >
                 <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                <span className="text-text-secondary leading-relaxed">{credential}</span>
+                <span className="text-text-primary/80 leading-relaxed">{credential}</span>
               </motion.li>
             ))}
           </ul>

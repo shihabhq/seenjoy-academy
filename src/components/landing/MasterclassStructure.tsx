@@ -44,12 +44,12 @@ export default function MasterclassStructure() {
                 <h3 className="text-text-primary font-bold text-xl mb-1">
                   {cls.title}
                 </h3>
-                <p className="text-text-secondary text-sm mb-5">{cls.subtitle}</p>
+                <p className="text-text-primary/70 text-sm mb-5">{cls.subtitle}</p>
                 <ul className="space-y-3">
                   {cls.topics.map((topic, topicIndex) => (
                     <li
                       key={topicIndex}
-                      className="flex items-start gap-3 text-text-secondary"
+                      className="flex items-start gap-3 text-text-primary/80"
                     >
                       <CheckCircle className="w-4 h-4 text-accent-gold flex-shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{topic.text}</span>
@@ -70,7 +70,7 @@ export default function MasterclassStructure() {
           className="bg-accent-gold/5 border border-accent-gold/20 rounded-xl p-5 flex items-start gap-4 mb-8"
         >
           <Pencil className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
-          <p className="text-text-secondary leading-relaxed">
+          <p className="text-text-primary/75 leading-relaxed">
             {SECTIONS.curriculum.homeworkNote}
           </p>
         </motion.div>

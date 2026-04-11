@@ -44,14 +44,14 @@ export default function OrderSummary() {
         </div>
         <div className="flex justify-between items-center text-sm text-text-secondary mb-2">
           <span>আর্লি বার্ড ছাড়</span>
-          <span className="text-success">-৳{COURSE_INFO.originalPrice - COURSE_INFO.price}</span>
+          <span className="text-success">৳{COURSE_INFO.originalPrice - COURSE_INFO.price}</span>
         </div>
       </div>
 
       <div className="border-t border-border-default pt-4">
         <div className="flex justify-between items-center">
           <span className="text-text-primary font-semibold">মোট পরিমাণ</span>
-          <span className="text-3xl font-bold text-accent-gold">৳{COURSE_INFO.price}</span>
+          <span className="text-3xl font-bold text-white">৳{COURSE_INFO.price}</span>
         </div>
       </div>
     </Card>

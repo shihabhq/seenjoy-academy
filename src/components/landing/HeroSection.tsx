@@ -105,46 +105,52 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: "radial-gradient(circle, #20b2aa 1px, transparent 1px)",
+          backgroundImage:
+            "radial-gradient(circle, #20b2aa 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
 
       <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-20">
+
+        {/* Mobile-only heading — renders above the image */}
+        <motion.h1
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="lg:hidden text-2xl sm:text-3xl font-bold text-text-primary leading-[1.2] mb-8 text-center"
+        >
+          SPEAK TO WIN:{" "}
+          <span className="relative text-accent-gold">
+            LIVE MASTERCLASS
+            <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" />
+          </span>{" "}
+          on Communication and Public Speaking
+        </motion.h1>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-12 items-center">
-
           {/* ── Left: Text ── */}
-          <div className="order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-5"
-            >
-              <Badge variant="accent" className="text-sm px-4 py-1.5">
-                {HERO.badge}
-              </Badge>
-            </motion.div>
-
+          <div className="order-2 lg:order-1 text-center lg:text-left">
+            {/* Desktop-only heading — inside the left column */}
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold text-text-primary leading-[1.15] mb-4"
+              className="hidden lg:block text-4xl xl:text-5xl font-bold text-text-primary leading-[1.15] mb-6"
             >
-              কথায় জিতুন,{" "}
+              SPEAK TO WIN:{" "}
               <span className="relative text-accent-gold">
-                জীবনে
+                LIVE MASTERCLASS
                 <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" />
               </span>{" "}
-              এগিয়ে যান
+              on Communication and Public Speaking
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg md:text-xl text-text-secondary mb-4 leading-relaxed"
+              className="text-lg md:text-xl text-text-primary/80 mb-4 leading-relaxed"
             >
               {HERO.subHeadline}
             </motion.p>
@@ -153,7 +159,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-text-secondary leading-relaxed mb-7 text-base"
+              className="text-text-primary/70 leading-relaxed mb-7 text-base"
             >
               {HERO.description}
             </motion.p>
@@ -163,18 +169,30 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap gap-2 mb-8"
+              className="flex flex-wrap gap-2 mb-8 justify-center lg:justify-start"
             >
-              <Badge icon={<Calendar className="w-3.5 h-3.5" />} className="text-xs">
+              <Badge
+                icon={<Calendar className="w-3.5 h-3.5" />}
+                className="text-xs"
+              >
                 {COURSE_INFO.dates}
               </Badge>
-              <Badge icon={<Clock className="w-3.5 h-3.5" />} className="text-xs">
+              <Badge
+                icon={<Clock className="w-3.5 h-3.5" />}
+                className="text-xs"
+              >
                 {COURSE_INFO.time}
               </Badge>
-              <Badge icon={<Globe className="w-3.5 h-3.5" />} className="text-xs">
+              <Badge
+                icon={<Globe className="w-3.5 h-3.5" />}
+                className="text-xs"
+              >
                 {COURSE_INFO.platform} — অনলাইন
               </Badge>
-              <Badge icon={<Timer className="w-3.5 h-3.5" />} className="text-xs">
+              <Badge
+                icon={<Timer className="w-3.5 h-3.5" />}
+                className="text-xs"
+              >
                 {COURSE_INFO.durationPerClass} / ক্লাস
               </Badge>
             </motion.div>
@@ -204,7 +222,7 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.7 }}
-              className="flex items-center gap-2 text-warning text-sm font-medium"
+              className="flex items-center gap-2 text-warning text-sm font-medium justify-center lg:justify-start"
             >
               <motion.span
                 animate={{ opacity: [1, 0.3, 1] }}

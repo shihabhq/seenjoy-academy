@@ -152,12 +152,12 @@ export default function CheckoutForm() {
         loading={loading}
         className="w-full mt-2"
       >
-        পেমেন্ট করুন — ৳{COURSE_INFO.price}
+        পেমেন্ট করুন ৳{COURSE_INFO.price}
       </Button>
 
       <div className="flex items-center justify-center gap-2 text-text-secondary text-xs">
         <Lock className="w-3.5 h-3.5" />
-        <span>SSLCommerz দ্বারা সুরক্ষিত পেমেন্ট — আপনার তথ্য সম্পূর্ণ নিরাপদ</span>
+        <span>SSLCommerz দ্বারা সুরক্ষিত পেমেন্ট আপনার তথ্য সম্পূর্ণ নিরাপদ</span>
       </div>
     </form>
   );

@@ -45,7 +45,7 @@ function AccordionItem({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-4 text-text-secondary leading-relaxed border-t border-border-default pt-4">
+            <div className="px-6 pb-4 text-text-primary/80 leading-relaxed border-t border-border-default pt-4">
               {item.answer}
             </div>
           </motion.div>
