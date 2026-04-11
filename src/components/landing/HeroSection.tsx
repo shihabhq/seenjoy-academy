@@ -99,13 +99,13 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,_#1a1040_0%,_transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_50%,_#0d2040_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,_#0d4744_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_50%,_#062422_0%,_transparent_60%)]" />
       {/* Subtle dot grid */}
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: "radial-gradient(circle, #F5A623 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #20b2aa 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -114,7 +114,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-12 items-center">
 
           {/* ── Left: Text ── */}
-          <div className="order-1">
+          <div className="order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -184,16 +184,16 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-5"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-5"
             >
-              <Link href="/checkout">
+              <Link href="/checkout" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full sm:w-auto">
                   {HERO.ctaText}
                 </Button>
               </Link>
               <a
                 href="#curriculum"
-                className="text-accent-teal hover:text-accent-teal/80 transition-colors text-sm font-medium underline-offset-4 hover:underline"
+                className="text-accent-teal hover:text-accent-teal/80 transition-colors text-sm font-medium underline-offset-4 hover:underline text-center sm:text-left"
               >
                 কোর্স সম্পর্কে জানুন ↓
               </a>

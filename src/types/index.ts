@@ -70,7 +70,6 @@ export interface LearningOutcome {
 }
 
 export interface CurriculumTopic {
-  emoji: string;
   text: string;
 }
 

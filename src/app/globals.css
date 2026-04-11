@@ -2,23 +2,23 @@
 
 @theme inline {
   /* Background colors */
-  --color-bg-primary: #0A0A0F;
-  --color-bg-secondary: #111118;
-  --color-bg-tertiary: #1A1A24;
+  --color-bg-primary: #031211;
+  --color-bg-secondary: #062422;
+  --color-bg-tertiary: #0a3533;
 
   /* Border colors */
-  --color-border-default: #2A2A35;
-  --color-border-focus: #F5A623;
+  --color-border-default: #0d4744;
+  --color-border-focus: #20b2aa;
 
   /* Accent colors */
-  --color-accent-gold: #F5A623;
-  --color-accent-gold-hover: #E09500;
-  --color-accent-teal: #22D3EE;
+  --color-accent-gold: #20b2aa;
+  --color-accent-gold-hover: #1da099;
+  --color-accent-teal: #1a8e88;
 
   /* Text colors */
   --color-text-primary: #F0F0F5;
   --color-text-secondary: #9CA3AF;
-  --color-text-on-accent: #0A0A0F;
+  --color-text-on-accent: #031211;
 
   /* State colors */
   --color-success: #22C55E;
@@ -32,7 +32,7 @@
 }
 
 :root {
-  --accent-gold-glow: rgba(245, 166, 35, 0.25);
+  --accent-gold-glow: rgba(32, 178, 170, 0.25);
 }
 
 html {
@@ -41,7 +41,7 @@ html {
 }
 
 body {
-  background-color: #0A0A0F;
+  background-color: #031211;
   color: #F0F0F5;
   font-family: var(--font-hind-siliguri), var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -55,20 +55,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111118;
+  background: #062422;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2A2A35;
+  background: #0d4744;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3A3A45;
+  background: #136b66;
 }
 
 /* Focus visible */
 :focus-visible {
-  outline: 2px solid #F5A623;
+  outline: 2px solid #20b2aa;
   outline-offset: 2px;
 }
