@@ -150,7 +150,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg md:text-xl text-text-primary/80 mb-4 leading-relaxed"
+              className="text-sm md:text-lg text-text-primary/80 mb-4 leading-relaxed"
             >
               {HERO.subHeadline}
             </motion.p>
@@ -206,7 +206,7 @@ export default function HeroSection() {
             >
               <Link href="/checkout" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full sm:w-auto">
-                  {HERO.ctaText}
+                  JOIN NOW
                 </Button>
               </Link>
               <a
