@@ -123,7 +123,7 @@ export default function HeroSection() {
           SPEAK TO WIN:{" "}
           <span className="relative text-accent-gold">
             LIVE MASTERCLASS
-            <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" />
+            {/* <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" /> */}
           </span>{" "}
           on Communication and Public Speaking
         </motion.h1>
@@ -141,7 +141,7 @@ export default function HeroSection() {
               SPEAK TO WIN:{" "}
               <span className="relative text-accent-gold">
                 LIVE MASTERCLASS
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" />
+                {/* <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" /> */}
               </span>{" "}
               on Communication and Public Speaking
             </motion.h1>
@@ -150,7 +150,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-sm md:text-lg text-text-primary/80 mb-4 leading-relaxed"
+              className="text-base md:text-lg text-text-primary/90 mb-4 leading-relaxed"
             >
               {HERO.subHeadline}
             </motion.p>
@@ -159,7 +159,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-text-primary/70 leading-relaxed mb-7 text-base"
+              className="text-text-primary/90 leading-relaxed mb-7 text-base"
             >
               {HERO.description}
             </motion.p>
@@ -205,7 +205,7 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-5"
             >
               <Link href="/checkout" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button size="xl" className="w-full sm:w-auto">
                   JOIN NOW
                 </Button>
               </Link>

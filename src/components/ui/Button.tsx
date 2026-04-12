@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { ComponentPropsWithoutRef } from "react";
 
 type ButtonVariant = "primary" | "secondary";
-type ButtonSize = "sm" | "md" | "lg";
+type ButtonSize = "sm" | "md" | "lg" | "xl";
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant?: ButtonVariant;
@@ -19,6 +19,7 @@ const sizeClasses: Record<ButtonSize, string> = {
   sm: "px-5 py-2 text-sm",
   md: "px-8 py-3.5 text-base",
   lg: "px-10 py-4 text-lg",
+  xl: "px-12 py-5 text-xl",
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
