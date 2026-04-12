@@ -48,7 +48,7 @@ export default function WhatYouLearn() {
                 <h3 className="text-text-primary text-center font-semibold text-lg mb-2">
                   {outcome.title}
                 </h3>
-                <p className="text-text-primary/75 text-center leading-relaxed">
+                <p className="text-text-primary/85 text-center leading-relaxed">
                   {outcome.description}
                 </p>
               </Card>
