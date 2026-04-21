@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Globe, Mail, Users, Camera } from "lucide-react";
+import { ArrowLeft, Globe, Mail, MapPin, Users, Camera } from "lucide-react";
 
 const sections = [
   {
@@ -148,6 +148,10 @@ export default function AboutPage() {
               contact@seenjoy.academy
             </span>
           </a>
+          <div className="flex items-center gap-3 text-text-secondary pl-5 mt-3">
+            <MapPin className="w-4 h-4 text-accent-gold shrink-0" />
+            <span>Road 02, Block G, Aftabnagar, Dhaka</span>
+          </div>
         </div>
 
         {/* Other Information */}
