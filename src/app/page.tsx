@@ -6,12 +6,13 @@ import MentorSection from "@/components/landing/MentorSection";
 import FAQSection from "@/components/landing/FAQSection";
 import FinalCTA from "@/components/landing/FinalCTA";
 import Footer from "@/components/landing/Footer";
+import MobileFloatingBar from "@/components/landing/MobileFloatingBar";
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="pb-20 md:pb-0">
         <HeroSection />
         <WhatYouLearn />
         <MasterclassStructure />
@@ -20,6 +21,7 @@ export default function HomePage() {
         <FinalCTA />
       </main>
       <Footer />
+      <MobileFloatingBar />
     </>
   );
 }

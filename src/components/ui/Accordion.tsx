@@ -27,11 +27,13 @@ function AccordionItem({
         className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-bg-tertiary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-inset"
         aria-expanded={isOpen}
       >
-        <span className="font-medium text-text-primary pr-4">{item.question}</span>
+        <span className="font-medium text-text-primary pr-4">
+          {item.question}
+        </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
-          className="flex-shrink-0 text-accent-gold"
+          className="shrink-0 text-accent-gold"
         >
           <ChevronDown className="w-5 h-5" />
         </motion.div>

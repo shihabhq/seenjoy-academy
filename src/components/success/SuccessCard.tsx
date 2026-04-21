@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CheckCircle, Calendar, Clock, Monitor, Hash, Home, Mail } from "lucide-react";
+import {
+  CheckCircle,
+  Calendar,
+  Clock,
+  Monitor,
+  Hash,
+  Home,
+  Mail,
+} from "lucide-react";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { COURSE_INFO } from "@/lib/constants";
@@ -51,23 +59,23 @@ export default function SuccessCard({ order }: SuccessCardProps) {
           </h2>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
-              <Calendar className="w-4 h-4 text-accent-gold flex-shrink-0" />
+              <Calendar className="w-4 h-4 text-accent-gold shrink-0" />
               <span className="text-text-secondary">তারিখ:</span>
               <span className="text-text-primary">{COURSE_INFO.dates}</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Clock className="w-4 h-4 text-accent-gold flex-shrink-0" />
+              <Clock className="w-4 h-4 text-accent-gold shrink-0" />
               <span className="text-text-secondary">সময়:</span>
               <span className="text-text-primary">{COURSE_INFO.time}</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Monitor className="w-4 h-4 text-accent-gold flex-shrink-0" />
+              <Monitor className="w-4 h-4 text-accent-gold shrink-0" />
               <span className="text-text-secondary">প্ল্যাটফর্ম:</span>
               <span className="text-text-primary">{COURSE_INFO.platform}</span>
             </div>
             <div className="border-t border-border-default pt-3">
               <div className="flex items-start gap-3 text-sm">
-                <Hash className="w-4 h-4 text-accent-gold flex-shrink-0 mt-0.5" />
+                <Hash className="w-4 h-4 text-accent-gold shrink-0 mt-0.5" />
                 <span className="text-text-secondary">ট্রানজেকশন ID:</span>
                 <span className="text-accent-gold font-mono break-all">
                   {order.transactionId ?? "N/A"}
@@ -84,8 +92,11 @@ export default function SuccessCard({ order }: SuccessCardProps) {
         transition={{ duration: 0.5, delay: 0.5 }}
         className="bg-accent-gold/5 border border-accent-gold/20 rounded-xl p-4 mb-6 text-sm text-text-primary/75 flex items-start gap-3"
       >
-        <Mail className="w-4 h-4 text-accent-gold flex-shrink-0 mt-0.5" />
-        <span>আপনার ইমেইলে ({order.email}) একটি নিশ্চিতকরণ পাঠানো হয়েছে। ক্লাসের আগের দিন Zoom লিংক পাঠানো হবে।</span>
+        <Mail className="w-4 h-4 text-accent-gold shrink-0 mt-0.5" />
+        <span>
+          আপনার ইমেইলে ({order.email}) একটি নিশ্চিতকরণ পাঠানো হয়েছে। ক্লাসের
+          আগের দিন Zoom লিংক পাঠানো হবে।
+        </span>
       </motion.div>
 
       <motion.div
