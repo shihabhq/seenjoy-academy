@@ -21,10 +21,10 @@ export default function Badge({
         variant === "default"
           ? "bg-bg-secondary border-border-default text-text-primary/75"
           : "bg-accent-gold/10 border-accent-gold/30 text-accent-gold",
-        className
+        className,
       )}
     >
-      {icon && <span className="flex-shrink-0">{icon}</span>}
+      {icon && <span className="shrink-0">{icon}</span>}
       {children}
     </span>
   );

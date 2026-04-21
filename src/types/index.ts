@@ -1,9 +1,11 @@
 export type OrderStatus = "PENDING" | "PAID" | "FAILED" | "CANCELLED";
+export type CouponType = "PERCENTAGE" | "AMOUNT";
 
 export interface OrderFormData {
   name: string;
   email: string;
   phone: string;
+  couponCode?: string;
 }
 
 export interface Order {
@@ -19,8 +21,30 @@ export interface Order {
   sslSessionKey: string | null;
   paymentMethod: string | null;
   emailSent: boolean;
+  couponCode: string | null;
+  discountAmount: number;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Coupon {
+  id: string;
+  code: string;
+  type: CouponType;
+  value: number;
+  maxUses: number | null;
+  usedCount: number;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface AppliedCoupon {
+  code: string;
+  type: CouponType;
+  value: number;
+  discountAmount: number;
+  finalPrice: number;
 }
 
 export interface SSLCommerzInitResponse {

@@ -51,30 +51,34 @@ function HeroImage() {
         transition={{ delay: 0.8, duration: 0.5 }}
         className="absolute -top-4 -left-4 flex items-center gap-2 bg-bg-secondary/95 backdrop-blur-sm border border-border-default rounded-2xl px-3 py-2 shadow-xl"
       >
-        <div className="w-8 h-8 rounded-xl bg-accent-gold/15 flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-xl bg-accent-gold/15 flex items-center justify-center shrink-0">
           <Users className="w-4 h-4 text-accent-gold" />
         </div>
         <div>
-          <p className="text-text-primary text-xs font-bold leading-none">৫০০+</p>
-          <p className="text-text-secondary text-[10px] leading-none mt-0.5">শিক্ষার্থী</p>
+          <p className="text-text-primary text-xs font-bold leading-none">
+            ৫০০+
+          </p>
+          <p className="text-text-secondary text-[10px] leading-none mt-0.5">
+            শিক্ষার্থী
+          </p>
         </div>
       </motion.div>
 
       {/* Top-right: Rating */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.5 }}
         className="absolute -top-4 -right-4 flex items-center gap-2 bg-bg-secondary/95 backdrop-blur-sm border border-border-default rounded-2xl px-3 py-2 shadow-xl"
       >
-        <div className="w-8 h-8 rounded-xl bg-warning/15 flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-xl bg-warning/15 flex items-center justify-center shrink-0">
           <Star className="w-4 h-4 text-warning" fill="currentColor" />
         </div>
         <div>
           <p className="text-text-primary text-xs font-bold leading-none">৪.৯ / ৫</p>
           <p className="text-text-secondary text-[10px] leading-none mt-0.5">রেটিং</p>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Bottom-right: Live class */}
       <motion.div
@@ -83,12 +87,16 @@ function HeroImage() {
         transition={{ delay: 1.2, duration: 0.5 }}
         className="absolute -bottom-4 -right-4 flex items-center gap-2 bg-bg-secondary/95 backdrop-blur-sm border border-border-default rounded-2xl px-3 py-2 shadow-xl"
       >
-        <div className="w-8 h-8 rounded-xl bg-error/15 flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-xl bg-error/15 flex items-center justify-center shrink-0">
           <Mic2 className="w-4 h-4 text-error" />
         </div>
         <div>
-          <p className="text-text-primary text-xs font-bold leading-none">লাইভ ক্লাস</p>
-          <p className="text-text-secondary text-[10px] leading-none mt-0.5">Zoom-এ</p>
+          <p className="text-text-primary text-xs font-bold leading-none">
+            লাইভ ক্লাস
+          </p>
+          <p className="text-text-secondary text-[10px] leading-none mt-0.5">
+            Zoom-এ
+          </p>
         </div>
       </motion.div>
     </div>
@@ -112,7 +120,6 @@ export default function HeroSection() {
       />
 
       <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-20">
-
         {/* Mobile-only heading — renders above the image */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
@@ -172,26 +179,26 @@ export default function HeroSection() {
               className="flex flex-wrap gap-2 mb-8 justify-center lg:justify-start"
             >
               <Badge
-                icon={<Calendar className="w-3.5 h-3.5" />}
-                className="text-xs"
+                icon={<Calendar className="w-4 h-4" />}
+                className="text-sm"
               >
                 {COURSE_INFO.dates}
               </Badge>
               <Badge
-                icon={<Clock className="w-3.5 h-3.5" />}
-                className="text-xs"
+                icon={<Clock className="w-4 h-4" />}
+                className="text-sm"
               >
                 {COURSE_INFO.time}
               </Badge>
               <Badge
-                icon={<Globe className="w-3.5 h-3.5" />}
-                className="text-xs"
+                icon={<Globe className="w-4 h-4" />}
+                className="text-sm"
               >
                 {COURSE_INFO.platform} — অনলাইন
               </Badge>
               <Badge
-                icon={<Timer className="w-3.5 h-3.5" />}
-                className="text-xs"
+                icon={<Timer className="w-4 h-4" />}
+                className="text-sm"
               >
                 {COURSE_INFO.durationPerClass} / ক্লাস
               </Badge>
@@ -227,7 +234,7 @@ export default function HeroSection() {
               <motion.span
                 animate={{ opacity: [1, 0.3, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-2 h-2 rounded-full bg-warning flex-shrink-0"
+                className="w-2 h-2 rounded-full bg-warning shrink-0"
               />
               {HERO.urgency}
             </motion.p>

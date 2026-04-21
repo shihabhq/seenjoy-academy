@@ -4,10 +4,17 @@ import { initPayment } from "@/lib/sslcommerz";
 import { validateEmail, validateBDPhone, generateTransactionId } from "@/lib/utils";
 import { COURSE_INFO } from "@/lib/constants";
 
+function calcDiscount(type: string, value: number, basePrice: number): number {
+  if (type === "PERCENTAGE") {
+    return Math.floor(basePrice * (value / 100));
+  }
+  return Math.min(value, basePrice);
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone } = body;
+    const { name, email, phone, couponCode } = body;
 
     // Server-side validation
     if (!name?.trim() || !email?.trim() || !phone?.trim()) {
@@ -29,6 +36,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Resolve coupon server-side
+    let discountAmount = 0;
+    let resolvedCouponCode: string | null = null;
+
+    if (couponCode?.trim()) {
+      const coupon = await prisma.coupon.findUnique({
+        where: { code: couponCode.trim().toUpperCase() },
+      });
+
+      if (
+        coupon &&
+        coupon.isActive &&
+        (coupon.maxUses === null || coupon.usedCount < coupon.maxUses)
+      ) {
+        discountAmount = calcDiscount(coupon.type, coupon.value, COURSE_INFO.price);
+        resolvedCouponCode = coupon.code;
+      }
+    }
+
+    const finalAmount = COURSE_INFO.price - discountAmount;
     const transactionId = generateTransactionId();
 
     // Create order in DB
@@ -38,12 +65,22 @@ export async function POST(request: NextRequest) {
         email: email.trim().toLowerCase(),
         phone: phone.trim(),
         courseName: COURSE_INFO.name,
-        amount: COURSE_INFO.price,
+        amount: finalAmount,
         currency: COURSE_INFO.currency,
         transactionId,
         status: "PENDING",
+        couponCode: resolvedCouponCode,
+        discountAmount,
       },
     });
+
+    // Increment coupon usage
+    if (resolvedCouponCode) {
+      await prisma.coupon.update({
+        where: { code: resolvedCouponCode },
+        data: { usedCount: { increment: 1 } },
+      });
+    }
 
     // TODO: SSLCommerz - Initialize payment session
     const paymentSession = await initPayment({

@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
-import CheckoutForm from "@/components/checkout/CheckoutForm";
-import OrderSummary from "@/components/checkout/OrderSummary";
+import CheckoutLayout from "@/components/checkout/CheckoutLayout";
 
 interface CheckoutPageProps {
   searchParams: Promise<{ error?: string }>;
@@ -30,11 +30,15 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
       {/* Simple nav */}
       <nav className="border-b border-border-default bg-bg-secondary/50">
         <div className="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-accent-gold font-bold text-lg tracking-wider"
-          >
-            SEENJOY ACADEMY
+          <Link href="/" className="hover:opacity-80 transition-opacity">
+            <Image
+              src="/assets/main-logo.png"
+              alt="Seenjoy Academy"
+              width={140}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
           <Link
             href="/"
@@ -50,10 +54,7 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
         {error && <ErrorBanner error={error} />}
 
         <div className="max-w-6xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <CheckoutForm />
-            <OrderSummary />
-          </div>
+          <CheckoutLayout />
         </div>
       </main>
     </div>

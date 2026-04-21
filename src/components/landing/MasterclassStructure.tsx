@@ -11,10 +11,7 @@ import { CURRICULUM, SECTIONS, COURSE_INFO } from "@/lib/constants";
 
 export default function MasterclassStructure() {
   return (
-    <section
-      id="curriculum"
-      className="py-16 md:py-24 bg-bg-secondary/30"
-    >
+    <section id="curriculum" className="py-16 md:py-24 bg-bg-secondary/30">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,14 +41,16 @@ export default function MasterclassStructure() {
                 <h3 className="text-text-primary font-bold text-xl mb-1">
                   {cls.title}
                 </h3>
-                <p className="text-text-primary/70 text-sm mb-5">{cls.subtitle}</p>
+                <p className="text-text-primary/70 text-sm mb-5">
+                  {cls.subtitle}
+                </p>
                 <ul className="space-y-3">
                   {cls.topics.map((topic, topicIndex) => (
                     <li
                       key={topicIndex}
                       className="flex items-start gap-3 text-text-primary/80"
                     >
-                      <CheckCircle className="w-4 h-4 text-accent-gold flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-accent-gold shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{topic.text}</span>
                     </li>
                   ))}
@@ -69,7 +68,7 @@ export default function MasterclassStructure() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="bg-accent-gold/5 border border-accent-gold/20 rounded-xl p-5 flex items-start gap-4 mb-8"
         >
-          <Pencil className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+          <Pencil className="w-5 h-5 text-accent-gold shrink-0 mt-0.5" />
           <p className="text-text-primary/75 leading-relaxed">
             {SECTIONS.curriculum.homeworkNote}
           </p>
