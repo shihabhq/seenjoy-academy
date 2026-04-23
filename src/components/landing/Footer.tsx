@@ -16,7 +16,7 @@ export default function Footer() {
               className="h-13 w-auto object-contain mb-4"
             />
             <p className="text-text-secondary text-sm mt-1">
-              © {new Date().getFullYear()} Seenjoy Academy. সর্বস্বত্ব সংরক্ষিত।
+              Copyright © 2026 Seenjoy Academy. All Rights Reserved.
             </p>
           </div>
 
@@ -24,10 +24,10 @@ export default function Footer() {
             <p className="text-text-secondary text-sm">
               সাপোর্ট:{" "}
               <a
-                href="mailto:contact@seenjoyacademy.com"
+                href="mailto:contact@seenjoy.academy"
                 className="text-accent-teal hover:underline"
               >
-                contact@seenjoyacademy.com
+                contact@seenjoy.academy
               </a>
             </p>
             <div className="flex items-center gap-4">

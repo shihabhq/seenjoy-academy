@@ -96,7 +96,7 @@ function HeroImage({ onPlayClick }: { onPlayClick: () => void }) {
       {/* ── Floating chips ── */}
 
       {/* Top-left: Students */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
@@ -113,7 +113,7 @@ function HeroImage({ onPlayClick }: { onPlayClick: () => void }) {
             শিক্ষার্থী
           </p>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Bottom-right: Live class */}
       <motion.div

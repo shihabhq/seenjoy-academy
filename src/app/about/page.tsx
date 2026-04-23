@@ -187,7 +187,7 @@ export default function AboutPage() {
             Legal TRAD/DNCC/046533/2025
           </p>
           <p className="text-text-secondary text-sm">
-            Copyright 2026 © Seenjoy Academy. All Rights Reserved.
+            Copyright © 2026 Seenjoy Academy. All Rights Reserved.
           </p>
         </div>
       </main>

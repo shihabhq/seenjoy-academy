@@ -126,7 +126,7 @@ export default function RefundPolicyPage() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-border-default">
-          <p className="text-text-secondary text-xs">Copyright 2026 — Seenjoy Academy. All Rights Reserved.</p>
+          <p className="text-text-secondary text-xs">Copyright © 2026 Seenjoy Academy. All Rights Reserved.</p>
         </div>
       </main>
     </div>
