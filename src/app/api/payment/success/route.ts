@@ -8,23 +8,32 @@ import type { Order } from "@/types";
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
-    const ipnData = Object.fromEntries(formData.entries()) as Record<string, string>;
+    const ipnData = Object.fromEntries(formData.entries()) as Record<
+      string,
+      string
+    >;
 
     // TODO: SSLCommerz - Validate payment hash
     const { isValid } = await validatePayment(ipnData);
 
     if (!isValid) {
       return NextResponse.redirect(
-        new URL("/checkout?error=payment_failed", request.url),
-        302
+        new URL(
+          "/checkout?error=payment_failed",
+          process.env.NEXT_PUBLIC_BASE_URL,
+        ),
+        302,
       );
     }
 
     const transactionId = ipnData.tran_id;
     if (!transactionId) {
       return NextResponse.redirect(
-        new URL("/checkout?error=payment_failed", request.url),
-        302
+        new URL(
+          "/checkout?error=payment_failed",
+          process.env.NEXT_PUBLIC_BASE_URL,
+        ),
+        302,
       );
     }
 
@@ -49,14 +58,17 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.redirect(
-      new URL(`/success?orderId=${order.id}`, request.url),
-      302
+      new URL(`/success?orderId=${order.id}`, process.env.NEXT_PUBLIC_BASE_URL),
+      302,
     );
   } catch (error) {
     console.error("POST /api/payment/success error:", error);
     return NextResponse.redirect(
-      new URL("/checkout?error=payment_failed", request.url),
-      302
+      new URL(
+        "/checkout?error=payment_failed",
+        process.env.NEXT_PUBLIC_BASE_URL,
+      ),
+      302,
     );
   }
 }

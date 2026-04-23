@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Lock, Tag, CheckCircle, X } from "lucide-react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
@@ -148,7 +149,7 @@ export default function CheckoutForm({
         throw new Error(data.error ?? "অনুরোধ ব্যর্থ হয়েছে");
       }
 
-      router.push(data.paymentUrl);
+      window.location.href = data.paymentUrl;
     } catch (error) {
       const message =
         error instanceof Error
@@ -357,6 +358,23 @@ export default function CheckoutForm({
         <span>
           SSLCommerz দ্বারা সুরক্ষিত পেমেন্ট আপনার তথ্য সম্পূর্ণ নিরাপদ
         </span>
+      </div>
+
+      <div className="flex justify-center pt-2">
+        <Image
+          src="/payment/payment-banner-desktop.png"
+          alt="SSLCommerz Payment Methods"
+          width={420}
+          height={60}
+          className="hidden md:block mx-auto"
+        />
+        <Image
+          src="/payment/payment-banner-phone.png"
+          alt="SSLCommerz Payment Methods"
+          width={300}
+          height={80}
+          className="block md:hidden mx-auto"
+        />
       </div>
     </form>
   );

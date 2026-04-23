@@ -1,17 +1,60 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Calendar, Clock, Globe, Timer, Users, Star, Mic2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Clock, Globe, Timer, Users, Mic2, Play, X } from "lucide-react";
+
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import { COURSE_INFO, HERO, MENTOR_INFO } from "@/lib/constants";
 
-function HeroImage() {
+const YOUTUBE_ID = "mHi0dcXjSHY";
+
+function VideoModal({ onClose }: { onClose: () => void }) {
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm px-4"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.92, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.92, opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="relative w-full max-w-3xl"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            className="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors"
+            aria-label="Close video"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+            <iframe
+              src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`}
+              title="Speak To Win Preview"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+function HeroImage({ onPlayClick }: { onPlayClick: () => void }) {
   return (
     <div className="relative w-full max-w-[340px] md:max-w-[400px]">
-      {/* Ambient glow behind image */}
+      {/* Ambient glow */}
       <div className="absolute inset-4 rounded-3xl bg-accent-gold/20 blur-3xl" />
 
       {/* Image frame */}
@@ -19,19 +62,27 @@ function HeroImage() {
         {/* Top accent bar */}
         <div className="absolute top-0 inset-x-0 h-0.5 bg-linear-to-r from-transparent via-accent-gold to-transparent z-10" />
 
-        {/* Instructor image — replace /images/instructor.svg with a real photo */}
+        {/* Thumbnail — 4:5 ratio */}
         <div className="relative aspect-4/5 w-full bg-bg-secondary">
-          <Image
-            src="/images/instructor.png"
+          <img
+            src="/images/seenjoy.jpeg"
             alt={`${MENTOR_INFO.name} — Speak To Win মাস্টারক্লাস`}
-            fill
-            className="object-cover object-top"
-            priority
-            sizes="(max-width: 768px) 340px, 400px"
+            className="absolute inset-0 w-full h-full object-cover object-top"
           />
 
+          {/* Play button overlay */}
+          <button
+            onClick={onPlayClick}
+            aria-label="ভিডিও দেখুন"
+            className="absolute inset-0 flex items-center justify-center group"
+          >
+            <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-accent-gold shadow-[0_0_30px_rgba(245,166,35,0.5)] group-hover:scale-110 group-hover:shadow-[0_0_45px_rgba(245,166,35,0.7)] transition-all duration-300">
+              <Play className="w-6 h-6 text-bg-primary fill-bg-primary ml-1" />
+            </div>
+          </button>
+
           {/* Bottom name plate */}
-          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-bg-primary/95 via-bg-primary/60 to-transparent px-5 pt-10 pb-5">
+          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-bg-primary/95 via-bg-primary/60 to-transparent px-5 pt-10 pb-5 pointer-events-none">
             <p className="text-text-primary font-bold text-lg leading-tight">
               {MENTOR_INFO.name}
             </p>
@@ -64,22 +115,6 @@ function HeroImage() {
         </div>
       </motion.div>
 
-      {/* Top-right: Rating */}
-      {/* <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.0, duration: 0.5 }}
-        className="absolute -top-4 -right-4 flex items-center gap-2 bg-bg-secondary/95 backdrop-blur-sm border border-border-default rounded-2xl px-3 py-2 shadow-xl"
-      >
-        <div className="w-8 h-8 rounded-xl bg-warning/15 flex items-center justify-center shrink-0">
-          <Star className="w-4 h-4 text-warning" fill="currentColor" />
-        </div>
-        <div>
-          <p className="text-text-primary text-xs font-bold leading-none">৪.৯ / ৫</p>
-          <p className="text-text-secondary text-[10px] leading-none mt-0.5">রেটিং</p>
-        </div>
-      </motion.div> */}
-
       {/* Bottom-right: Live class */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -104,7 +139,11 @@ function HeroImage() {
 }
 
 export default function HeroSection() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
+    <>
+    {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
       {/* Background gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,_#0d4744_0%,_transparent_60%)]" />
@@ -240,17 +279,18 @@ export default function HeroSection() {
             </motion.p>
           </div>
 
-          {/* ── Right: Instructor image ── */}
+          {/* ── Right: Thumbnail + video modal ── */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
             className="order-1 lg:order-2 flex justify-center lg:justify-end pt-6 pb-6"
           >
-            <HeroImage />
+            <HeroImage onPlayClick={() => setVideoOpen(true)} />
           </motion.div>
         </div>
       </div>
     </section>
+    </>
   );
 }

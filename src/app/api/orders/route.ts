@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { initPayment } from "@/lib/sslcommerz";
-import { validateEmail, validateBDPhone, generateTransactionId } from "@/lib/utils";
+import {
+  validateEmail,
+  validateBDPhone,
+  generateTransactionId,
+} from "@/lib/utils";
 import { COURSE_INFO } from "@/lib/constants";
 
 function calcDiscount(type: string, value: number, basePrice: number): number {
@@ -20,19 +24,19 @@ export async function POST(request: NextRequest) {
     if (!name?.trim() || !email?.trim() || !phone?.trim()) {
       return NextResponse.json(
         { error: "সব তথ্য দেওয়া আবশ্যিক" },
-        { status: 400 }
+        { status: 400 },
       );
     }
     if (!validateEmail(email)) {
       return NextResponse.json(
         { error: "সঠিক ইমেইল ঠিকানা দিন" },
-        { status: 400 }
+        { status: 400 },
       );
     }
     if (!validateBDPhone(phone)) {
       return NextResponse.json(
         { error: "সঠিক বাংলাদেশী নম্বর দিন" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -50,9 +54,30 @@ export async function POST(request: NextRequest) {
         coupon.isActive &&
         (coupon.maxUses === null || coupon.usedCount < coupon.maxUses)
       ) {
-        discountAmount = calcDiscount(coupon.type, coupon.value, COURSE_INFO.price);
+        discountAmount = calcDiscount(
+          coupon.type,
+          coupon.value,
+          COURSE_INFO.price,
+        );
         resolvedCouponCode = coupon.code;
       }
+    }
+
+    // Duplicate enrollment check
+    const existingOrder = await prisma.order.findFirst({
+      where: {
+        status: "PAID",
+        OR: [{ email: email.trim().toLowerCase() }, { phone: phone.trim() }],
+      },
+    });
+
+    if (existingOrder) {
+      return NextResponse.json(
+        {
+          error: "এই ইমেইল বা হোয়াটসঅ্যাপ নম্বর দিয়ে ইতিমধ্যে ভর্তি হয়েছেন",
+        },
+        { status: 409 },
+      );
     }
 
     const finalAmount = COURSE_INFO.price - discountAmount;
@@ -82,19 +107,23 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // TODO: SSLCommerz - Initialize payment session
     const paymentSession = await initPayment({
       orderId: order.id,
       amount: order.amount,
       name: order.name,
       email: order.email,
+      transactionId: transactionId,
       phone: order.phone,
     });
 
     if (paymentSession.status !== "SUCCESS") {
+      await prisma.order.update({
+        where: { id: order.id },
+        data: { status: "FAILED" },
+      });
       return NextResponse.json(
         { error: "পেমেন্ট শুরু করা সম্ভব হয়নি। আবার চেষ্টা করুন।" },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -112,7 +141,7 @@ export async function POST(request: NextRequest) {
     console.error("POST /api/orders error:", error);
     return NextResponse.json(
       { error: "সার্ভারে সমস্যা হয়েছে। আবার চেষ্টা করুন।" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

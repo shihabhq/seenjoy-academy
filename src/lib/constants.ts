@@ -11,7 +11,7 @@ export const COURSE_INFO: CourseInfo = {
   mentor: "Seenjoy Saha",
   dates: "৮ ও ৯ মে, ২০২৬",
   time: "রাত ৮:০০ টা",
-  price: 850,
+  price: 10,
   originalPrice: 1500,
   currency: "BDT",
   platform: "Zoom",

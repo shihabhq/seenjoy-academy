@@ -6,56 +6,72 @@ interface OrderData {
   name: string;
   email: string;
   phone: string;
+  transactionId: string;
 }
 
-// TODO: SSLCommerz - Replace with actual API call to SSLCOMMERZ_INIT_URL
-export async function initPayment(orderData: OrderData): Promise<SSLCommerzInitResponse> {
-  // TODO: SSLCommerz - Real implementation:
-  // const response = await fetch(process.env.SSLCOMMERZ_INIT_URL!, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //   body: new URLSearchParams({
-  //     store_id: process.env.SSLCOMMERZ_STORE_ID!,
-  //     store_passwd: process.env.SSLCOMMERZ_STORE_PASSWORD!,
-  //     total_amount: orderData.amount.toString(),
-  //     currency: "BDT",
-  //     tran_id: orderData.orderId,
-  //     success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payment/success`,
-  //     fail_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payment/fail`,
-  //     cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payment/cancel`,
-  //     cus_name: orderData.name,
-  //     cus_email: orderData.email,
-  //     cus_phone: orderData.phone,
-  //     cus_add1: "Bangladesh",
-  //     cus_city: "Dhaka",
-  //     cus_country: "Bangladesh",
-  //     shipping_method: "NO",
-  //     product_name: "Speak To Win Masterclass",
-  //     product_category: "Education",
-  //     product_profile: "non-physical-goods",
-  //   }),
-  // });
-  // const data = await response.json();
-  // return data;
+const STORE_ID = process.env.SSLCOMMERZ_STORE_ID;
+const STORE_PASSWORD = process.env.SSLCOMMERZ_STORE_PASSWORD;
+const IS_SANDBOX = process.env.SSLCOMMERZ_IS_SANDBOX === "true";
+const INIT_URL = process.env.SSLCOMMERZ_INIT_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const VALIDATION_URL = process.env.SSLCOMMERZ_VALIDATION_URL;
 
-  // TODO: SSLCommerz - MOCK response for development
-  return {
-    status: "SUCCESS",
-    GatewayPageURL: `/success?orderId=${orderData.orderId}`,
-    sessionkey: "mock-session-" + Date.now(),
-  };
+export async function initPayment(
+  data: OrderData,
+): Promise<SSLCommerzInitResponse> {
+  const searchParams = new URLSearchParams({
+    store_id: STORE_ID!,
+    store_passwd: STORE_PASSWORD!,
+    total_amount: data.amount.toString(),
+    currency: "BDT",
+    tran_id: data.transactionId,
+    product_name: "Speak To Win",
+    product_category: "Online Course",
+    product_profile: "general",
+    cus_name: data.name,
+    cus_email: data.email,
+    cus_phone: data.phone,
+    success_url: `${BASE_URL}/api/payment/success`,
+    fail_url: `${BASE_URL}/api/payment/fail`,
+    cancel_url: `${BASE_URL}/api/payment/cancel`,
+    cus_add1: "Bangladesh",
+    cus_city: "Dhaka",
+    cus_country: "Bangladesh",
+    cus_postcode: "1205",
+  });
+  try {
+    const response = await fetch(INIT_URL!, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: searchParams,
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error("SSLCommerz initPayment error:", error);
+    return { status: "FAILED" };
+  }
 }
 
-// TODO: SSLCommerz - Replace with actual hash validation
+
 export async function validatePayment(
-  ipnData: Partial<SSLCommerzIPNPayload>
+  ipnData: Partial<SSLCommerzIPNPayload>,
 ): Promise<{ isValid: boolean }> {
-  // TODO: SSLCommerz - Real implementation:
-  // 1. Build the verification string from IPN data fields
-  // 2. Hash it with MD5 using store password
-  // 3. Compare with ipnData.verify_sign
-  // 4. Also call SSLCOMMERZ_VALIDATION_URL with val_id to double-verify
+  try {
+    const val_id = ipnData.val_id;
+    if (!val_id) return { isValid: false };
 
-  void ipnData; // TODO: SSLCommerz - Use this in real implementation
-  return { isValid: true };
+    const url = `${VALIDATION_URL}?val_id=${val_id}&store_id=${STORE_ID}&store_passwd=${STORE_PASSWORD}&v=1&format=json`;
+
+    const response = await fetch(url);
+
+    const result = await response.json();
+
+    const isValid = result.status === "VALID" || result.status === "VALIDATED";
+
+    return { isValid };
+  } catch {
+    return { isValid: false };
+  }
 }

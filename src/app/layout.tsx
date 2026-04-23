@@ -15,14 +15,62 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Seenjoy Academy Speak To Win | পাবলিক স্পিকিং মাস্টারক্লাস",
+  icons: {
+    icon: "/assets/main-logo.png",
+    apple: "/assets/main-logo.png",
+  },
+  title: "Speak To Win — Live Public Speaking Masterclass by Seenjoy Saha",
   description:
-    "Seenjoy Saha-র সাথে ২ দিনের লাইভ মাস্টারক্লাসে পাবলিক স্পিকিং শিখুন। আত্মবিশ্বাসী বক্তা হয়ে উঠুন মাত্র ৳৯৯৯-এ।",
+    "Join Seenjoy Saha's 2-day live Zoom masterclass and master public speaking, storytelling, and powerful communication. Limited seats available.",
+  keywords: [
+    "public speaking course Bangladesh",
+    "communication skills masterclass",
+    "Seenjoy Saha",
+    "Seenjoy Academy",
+    "Speak To Win",
+    "online course Bangladesh",
+    "public speaking Bangla",
+    "storytelling course",
+  ],
+  authors: [{ name: "Seenjoy Saha" }],
+  creator: "Seenjoy Academy",
+  metadataBase: new URL("https://seenjoy.academy"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Speak To Win: পাবলিক স্পিকিং মাস্টারক্লাস",
+    title: "Speak To Win — Live Public Speaking Masterclass by Seenjoy Saha",
     description:
-      "Seenjoy Saha-র সাথে ২ দিনের লাইভ মাস্টারক্লাসে পাবলিক স্পিকিং শিখুন।",
+      "Master public speaking, storytelling, and communication in just 2 live Zoom sessions with Seenjoy Saha.",
+    url: "https://seenjoy.academy",
+    siteName: "Seenjoy Academy",
+    images: [
+      {
+        url: "/assets/main-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Speak To Win Masterclass — Seenjoy Academy",
+      },
+    ],
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Speak To Win — Live Public Speaking Masterclass",
+    description:
+      "Master public speaking, storytelling, and communication in just 2 live Zoom sessions with Seenjoy Saha.",
+    images: ["/assets/main-logo.png"],
+    creator: "@seenjoysaha",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
   },
 };
 
