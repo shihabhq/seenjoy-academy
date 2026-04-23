@@ -356,7 +356,7 @@ export default function TermsAndConditionsPage() {
 
         <div className="mt-12 pt-6 border-t border-border-default">
           <p className="text-text-secondary text-sm mb-2">Seenjoy Academy retains complete ownership, authority, and control over all content and materials, platform systems, and branding and intellectual property. ANY violation will result in immediate enforcement action, civil and criminal proceedings, and maximum penalties permitted under Bangladesh law.</p>
-          <p className="text-text-secondary text-xs">Copyright 2026 — Seenjoy Academy. All Rights Reserved.</p>
+          <p className="text-text-secondary text-xs">Copyright © 2026 Seenjoy Academy. All Rights Reserved.</p>
         </div>
       </main>
     </div>

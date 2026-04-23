@@ -369,9 +369,9 @@ export default function CheckoutForm({
           className="hidden md:block mx-auto"
         />
         <Image
-          src="/payment/payment-banner-phone.png"
+          src="/payment/payment-banner_mobile.png"
           alt="SSLCommerz Payment Methods"
-          width={300}
+          width={400}
           height={80}
           className="block md:hidden mx-auto"
         />
