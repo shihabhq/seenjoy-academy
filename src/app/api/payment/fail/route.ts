@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.redirect(
-    new URL("/checkout?error=payment_failed", request.url),
-    302
+    new URL("/checkout?error=payment_failed", process.env.NEXT_PUBLIC_BASE_URL),
+    302,
   );
 }

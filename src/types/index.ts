@@ -49,8 +49,8 @@ export interface AppliedCoupon {
 
 export interface SSLCommerzInitResponse {
   status: "SUCCESS" | "FAILED";
-  GatewayPageURL: string;
-  sessionkey: string;
+  GatewayPageURL?: string;
+  sessionkey?: string;
   failedreason?: string;
   storeid?: string;
   amount?: number;
