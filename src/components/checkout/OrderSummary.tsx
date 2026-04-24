@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { Calendar, Clock, Globe, User } from "lucide-react";
 import Card from "@/components/ui/Card";
+import CampaignTimer from "@/components/ui/CampaignTimer";
 import { COURSE_INFO } from "@/lib/constants";
+import { useCampaign } from "@/hooks/useCampaign";
 import type { AppliedCoupon } from "@/types";
 
 interface OrderSummaryProps {
@@ -9,9 +13,11 @@ interface OrderSummaryProps {
 }
 
 export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
-  const earlyBirdDiscount = COURSE_INFO.originalPrice - COURSE_INFO.price;
+  const { price: basePrice, isActive } = useCampaign();
+  const discountFromOriginal = COURSE_INFO.originalPrice - basePrice;
   const couponDiscount = appliedCoupon?.discountAmount ?? 0;
-  const finalPrice = COURSE_INFO.price - couponDiscount;
+  const finalPrice = basePrice - couponDiscount;
+  const discountLabel = isActive ? "Grand Opening Discount" : "Early Bird Discount";
 
   return (
     <Card glass className="sticky top-8">
@@ -50,14 +56,17 @@ export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
         </div>
       </div>
 
+      {/* Campaign timer */}
+      <CampaignTimer variant="checkout" className="mb-4" />
+
       <div className="border-t border-border-default pt-4 mb-4 space-y-2">
         <div className="flex justify-between items-center text-sm text-text-secondary">
           <span>নিয়মিত মূল্য</span>
           <span className="line-through">৳{COURSE_INFO.originalPrice}</span>
         </div>
         <div className="flex justify-between items-center text-sm text-text-secondary">
-          <span>Early Bird Discount</span>
-          <span className="text-success">−৳{earlyBirdDiscount}</span>
+          <span>{discountLabel}</span>
+          <span className="text-success">−৳{discountFromOriginal}</span>
         </div>
         {appliedCoupon && (
           <div className="flex justify-between items-center text-sm text-text-secondary">

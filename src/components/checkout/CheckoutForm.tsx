@@ -8,7 +8,7 @@ import { Lock, Tag, CheckCircle, X } from "lucide-react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import { validateEmail, validateBDPhone } from "@/lib/utils";
-import { COURSE_INFO } from "@/lib/constants";
+import { useCampaign } from "@/hooks/useCampaign";
 import type { OrderFormData, AppliedCoupon } from "@/types";
 
 interface FormErrors {
@@ -31,6 +31,7 @@ export default function CheckoutForm({
   onCouponChange,
 }: CheckoutFormProps) {
   const router = useRouter();
+  const { price: basePrice } = useCampaign();
   const [formData, setFormData] = useState<OrderFormData>({
     name: "",
     email: "",
@@ -163,7 +164,7 @@ export default function CheckoutForm({
 
   const displayPrice = appliedCoupon
     ? appliedCoupon.finalPrice
-    : COURSE_INFO.price;
+    : basePrice;
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
