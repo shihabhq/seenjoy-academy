@@ -3,9 +3,15 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import CampaignTimer from "@/components/ui/CampaignTimer";
 import { SECTIONS, COURSE_INFO } from "@/lib/constants";
+import { useCampaign } from "@/hooks/useCampaign";
 
 export default function FinalCTA() {
+  const { price, isActive } = useCampaign();
+  const discountPct = Math.round(((COURSE_INFO.originalPrice - price) / COURSE_INFO.originalPrice) * 100);
+  const discountLabel = isActive ? "Grand Opening Discount" : "Early Bird Discount";
+
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Gradient background */}
@@ -45,13 +51,24 @@ export default function FinalCTA() {
               ৳{COURSE_INFO.originalPrice}
             </span>
             <span className="bg-accent-gold text-text-on-accent px-3 py-1 rounded-full text-sm font-bold">
-              {Math.round(((COURSE_INFO.originalPrice - COURSE_INFO.price) / COURSE_INFO.originalPrice) * 100)}% ছাড়
+              {discountPct}% ছাড়
             </span>
           </div>
           <div className="text-6xl font-bold text-white">
-            ৳{COURSE_INFO.price}
+            ৳{price}
           </div>
-          <p className="text-text-primary/70 text-sm">{SECTIONS.finalCta.currentPriceLabel}</p>
+          <p className="text-text-primary/70 text-sm">{discountLabel}</p>
+        </motion.div>
+
+        {/* Campaign countdown timer */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="flex justify-center mb-6"
+        >
+          <CampaignTimer variant="cta" />
         </motion.div>
 
         <motion.div
@@ -62,7 +79,7 @@ export default function FinalCTA() {
           className="mb-4"
         >
           <Link href="/checkout">
-            <Button size="lg">{SECTIONS.finalCta.ctaText}</Button>
+            <Button size="lg">{`এখনই ভর্তি হোন — ৳${price}`}</Button>
           </Link>
         </motion.div>
 

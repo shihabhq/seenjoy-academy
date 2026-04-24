@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, Globe, Timer, Users, Mic2, Play, X } from "lucide-react";
+import { Calendar, Clock, Globe, Timer, Mic2, Play, X } from "lucide-react";
 
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
+import CampaignTimer from "@/components/ui/CampaignTimer";
 import { COURSE_INFO, HERO, MENTOR_INFO } from "@/lib/constants";
 
 const YOUTUBE_ID = "mHi0dcXjSHY";
@@ -76,8 +77,8 @@ function HeroImage({ onPlayClick }: { onPlayClick: () => void }) {
             aria-label="ভিডিও দেখুন"
             className="absolute inset-0 flex items-center justify-center group"
           >
-            <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-accent-gold shadow-[0_0_30px_rgba(245,166,35,0.5)] group-hover:scale-110 group-hover:shadow-[0_0_45px_rgba(245,166,35,0.7)] transition-all duration-300">
-              <Play className="w-6 h-6 text-bg-primary fill-bg-primary ml-1" />
+            <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-red-600 shadow-[0_0_30px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:shadow-[0_0_45px_rgba(220,38,38,0.7)] transition-all duration-300">
+              <Play className="w-6 h-6 text-white fill-white ml-1" />
             </div>
           </button>
 
@@ -92,28 +93,6 @@ function HeroImage({ onPlayClick }: { onPlayClick: () => void }) {
           </div>
         </div>
       </div>
-
-      {/* ── Floating chips ── */}
-
-      {/* Top-left: Students */}
-      {/* <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-        className="absolute -top-4 -left-4 flex items-center gap-2 bg-bg-secondary/95 backdrop-blur-sm border border-border-default rounded-2xl px-3 py-2 shadow-xl"
-      >
-        <div className="w-8 h-8 rounded-xl bg-accent-gold/15 flex items-center justify-center shrink-0">
-          <Users className="w-4 h-4 text-accent-gold" />
-        </div>
-        <div>
-          <p className="text-text-primary text-xs font-bold leading-none">
-            ৫০০+
-          </p>
-          <p className="text-text-secondary text-[10px] leading-none mt-0.5">
-            শিক্ষার্থী
-          </p>
-        </div>
-      </motion.div> */}
 
       {/* Bottom-right: Live class */}
       <motion.div
@@ -144,7 +123,7 @@ export default function HeroSection() {
   return (
     <>
     {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-28">
       {/* Background gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,_#0d4744_0%,_transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_50%,_#062422_0%,_transparent_60%)]" />
@@ -169,7 +148,6 @@ export default function HeroSection() {
           SPEAK TO WIN:{" "}
           <span className="relative text-accent-gold">
             LIVE MASTERCLASS
-            {/* <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" /> */}
           </span>{" "}
           on Communication and Public Speaking
         </motion.h1>
@@ -187,7 +165,6 @@ export default function HeroSection() {
               SPEAK TO WIN:{" "}
               <span className="relative text-accent-gold">
                 LIVE MASTERCLASS
-                {/* <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-gold to-transparent rounded-full" /> */}
               </span>{" "}
               on Communication and Public Speaking
             </motion.h1>
@@ -241,6 +218,16 @@ export default function HeroSection() {
               >
                 {COURSE_INFO.durationPerClass} / ক্লাস
               </Badge>
+            </motion.div>
+
+            {/* Campaign countdown timer above JOIN NOW */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              className="mb-4 flex justify-center lg:justify-start"
+            >
+              <CampaignTimer variant="hero" className="w-full sm:w-auto" />
             </motion.div>
 
             {/* CTAs */}

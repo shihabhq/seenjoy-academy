@@ -7,6 +7,7 @@ import {
   generateTransactionId,
 } from "@/lib/utils";
 import { COURSE_INFO } from "@/lib/constants";
+import { getActivePrice } from "@/lib/campaign";
 
 function calcDiscount(type: string, value: number, basePrice: number): number {
   if (type === "PERCENTAGE") {
@@ -40,6 +41,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Determine active price (campaign or regular)
+    const activePrice = getActivePrice();
+
     // Resolve coupon server-side
     let discountAmount = 0;
     let resolvedCouponCode: string | null = null;
@@ -57,7 +61,7 @@ export async function POST(request: NextRequest) {
         discountAmount = calcDiscount(
           coupon.type,
           coupon.value,
-          COURSE_INFO.price,
+          activePrice,
         );
         resolvedCouponCode = coupon.code;
       }
@@ -80,7 +84,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const finalAmount = COURSE_INFO.price - discountAmount;
+    const finalAmount = activePrice - discountAmount;
     const transactionId = generateTransactionId();
 
     // Create order in DB
