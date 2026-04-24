@@ -123,7 +123,7 @@ export default function HeroSection() {
   return (
     <>
     {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-28">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-32">
       {/* Background gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,_#0d4744_0%,_transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_50%,_#062422_0%,_transparent_60%)]" />
@@ -225,7 +225,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.45 }}
-              className="mb-4 flex justify-center lg:justify-start"
+              className="mb-4 flex justify-center"
             >
               <CampaignTimer variant="hero" className="w-full sm:w-auto" />
             </motion.div>
