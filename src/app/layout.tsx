@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hind_Siliguri, Inter } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const hindSiliguri = Hind_Siliguri({
   variable: "--font-hind-siliguri",
@@ -85,6 +86,19 @@ export default function RootLayout({
       className={`${hindSiliguri.variable} ${inter.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary antialiased">
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-L2ZG7M318Q"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L2ZG7M318Q');
+          `}
+        </Script>
         {children}
       </body>
     </html>
