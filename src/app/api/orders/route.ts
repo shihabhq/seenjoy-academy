@@ -3,7 +3,6 @@ import { prisma } from "@/lib/prisma";
 import { initPayment } from "@/lib/sslcommerz";
 import {
   validateEmail,
-  validateBDPhone,
   generateTransactionId,
 } from "@/lib/utils";
 import { COURSE_INFO } from "@/lib/constants";
@@ -34,9 +33,9 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
-    if (!validateBDPhone(phone)) {
+    if (phone.trim().length < 5) {
       return NextResponse.json(
-        { error: "সঠিক বাংলাদেশী নম্বর দিন" },
+        { error: "সঠিক ফোন নম্বর দিন" },
         { status: 400 },
       );
     }
