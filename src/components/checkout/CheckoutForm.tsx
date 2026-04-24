@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Lock, Tag, CheckCircle, X } from "lucide-react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import { validateEmail, validateBDPhone } from "@/lib/utils";
+import { validateEmail } from "@/lib/utils";
 import { useCampaign } from "@/hooks/useCampaign";
 import type { OrderFormData, AppliedCoupon } from "@/types";
 
@@ -58,8 +58,8 @@ export default function CheckoutForm({
     if (name === "email" && !validateEmail(value)) {
       return "সঠিক ইমেইল ঠিকানা দিন";
     }
-    if (name === "phone" && !validateBDPhone(value)) {
-      return "সঠিক বাংলাদেশী নম্বর দিন (01XXXXXXXXX)";
+    if (name === "phone" && value.trim().length < 5) {
+      return "সঠিক ফোন নম্বর দিন";
     }
     return undefined;
   }
@@ -201,8 +201,8 @@ export default function CheckoutForm({
       <Input
         label="হোয়াটসঅ্যাপ নম্বর"
         type="tel"
-        placeholder="01XXXXXXXXX"
-        hint="বাংলাদেশী নম্বর (01 দিয়ে শুরু, ১১ সংখ্যা)"
+        placeholder="+880 1X / +1 XXX / any"
+        hint="WhatsApp নম্বর (যেকোনো দেশ)"
         value={formData.phone}
         onChange={(e) => handleChange("phone", e.target.value)}
         onBlur={() => handleBlur("phone")}
