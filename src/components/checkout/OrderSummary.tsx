@@ -48,7 +48,7 @@ export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
         </div>
         <div className="flex items-center gap-3 text-sm text-text-secondary">
           <Clock className="w-4 h-4 text-accent-gold shrink-0" />
-          <span>{COURSE_INFO.time} ({COURSE_INFO.durationPerClass})</span>
+          <span>{COURSE_INFO.time} ({COURSE_INFO.durationPerClass}/ক্লাস)</span>
         </div>
         <div className="flex items-center gap-3 text-sm text-text-secondary">
           <Globe className="w-4 h-4 text-accent-gold shrink-0" />
