@@ -17,7 +17,7 @@ export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
   const discountFromOriginal = COURSE_INFO.originalPrice - basePrice;
   const couponDiscount = appliedCoupon?.discountAmount ?? 0;
   const finalPrice = basePrice - couponDiscount;
-  const discountLabel = isActive ? "Grand Opening Discount" : "Early Bird Discount";
+  const discountLabel = "Early Bird Discount";
 
   return (
     <Card glass className="sticky top-8">
