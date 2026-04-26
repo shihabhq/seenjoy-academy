@@ -6,7 +6,7 @@ import { useCampaign } from "@/hooks/useCampaign";
 
 export default function MobileFloatingBar() {
   const { price, isActive } = useCampaign();
-  const discountLabel = "Early Bird";
+  const discountLabel = "Grand Opening";
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-bg-secondary/95 backdrop-blur-md border-t border-border-default safe-area-inset-bottom">
