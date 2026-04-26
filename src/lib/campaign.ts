@@ -1,7 +1,7 @@
 // Campaign: Grand Opening Discount
-// Window: April 26, 2026 8:00 PM → April 27, 2026 12:00 AM Bangladesh Standard Time (UTC+6)
+// Window: April 26, 2026 8:00 PM → April 28, 2026 12:00 AM Bangladesh Standard Time (UTC+6)
 export const CAMPAIGN_START = new Date("2026-04-26T14:00:00.000Z"); // 8PM BST
-export const CAMPAIGN_END   = new Date("2026-04-26T18:00:00.000Z"); // 12AM BST (midnight)
+export const CAMPAIGN_END   = new Date("2026-04-27T18:00:00.000Z"); // 12AM BST (midnight Apr 28)
 export const CAMPAIGN_NAME  = "Grand Opening Discount";
 export const CAMPAIGN_PRICE = 790;
 export const REGULAR_PRICE  = 850;
