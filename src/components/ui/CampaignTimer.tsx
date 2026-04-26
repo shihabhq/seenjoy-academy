@@ -17,7 +17,7 @@ function BannerUnit({ value, label }: { value: string; label: string }) {
       <div className="bg-black/30 backdrop-blur-sm rounded-md px-2 py-1 min-w-[36px] text-center">
         <span className="font-mono font-black text-white text-base leading-none">{value}</span>
       </div>
-      <span className="text-violet-200 text-[9px] leading-none mt-0.5 uppercase tracking-wide">{label}</span>
+      <span className="text-orange-200 text-[9px] leading-none mt-0.5 uppercase tracking-wide">{label}</span>
     </div>
   );
 }
@@ -57,13 +57,8 @@ export default function CampaignTimer({ variant, className }: Props) {
   const hh = d ? pad(d.hours) : "--";
   const mm = d ? pad(d.minutes) : "--";
   const ss = d ? pad(d.seconds) : "--";
-  const compact = d
-    ? d.days > 0
-      ? `${d.days}d ${pad(d.hours)}:${pad(d.minutes)}:${pad(d.seconds)}`
-      : `${pad(d.hours)}:${pad(d.minutes)}:${pad(d.seconds)}`
-    : "--:--:--";
 
-  // ── Banner — violet early bird alert strip ───────────────────────────
+  // ── Banner — orange grand opening alert strip ─────────────────────────
   if (variant === "banner") {
     return (
       <div
@@ -72,7 +67,7 @@ export default function CampaignTimer({ variant, className }: Props) {
           className
         )}
         style={{
-          background: "linear-gradient(135deg, #4c1d95 0%, #6d28d9 30%, #7c3aed 50%, #6d28d9 70%, #4c1d95 100%)",
+          background: "linear-gradient(135deg, #92400e 0%, #b45309 30%, #d97706 50%, #b45309 70%, #92400e 100%)",
           animation: "banner-alert-pulse 2.5s ease-in-out infinite",
         }}
       >
@@ -92,15 +87,15 @@ export default function CampaignTimer({ variant, className }: Props) {
             <div className="flex items-center gap-1">
               <Flame className="w-3.5 h-3.5 text-yellow-300 shrink-0" />
               <span className="text-white font-black text-xs uppercase tracking-widest whitespace-nowrap">
-                Early Bird Discount
+                Grand Opening Discount
               </span>
             </div>
-            <span className="text-violet-300/50 font-thin">|</span>
+            <span className="text-orange-300/50 font-thin">|</span>
             <div className="flex items-center gap-1.5">
-              <span className="text-violet-200/70 text-xs line-through whitespace-nowrap">
+              <span className="text-orange-200/70 text-xs line-through whitespace-nowrap">
                 ৳{COURSE_INFO.originalPrice}
               </span>
-              <span className="bg-white text-violet-700 font-black text-xs px-2.5 py-0.5 rounded-full whitespace-nowrap shadow-lg">
+              <span className="bg-white text-orange-700 font-black text-xs px-2.5 py-0.5 rounded-full whitespace-nowrap shadow-lg">
                 ৳{CAMPAIGN_PRICE}
               </span>
             </div>
@@ -108,19 +103,13 @@ export default function CampaignTimer({ variant, className }: Props) {
 
           {/* Row 2: Countdown */}
           <div className="flex items-end gap-1.5">
-            <span className="text-violet-200 text-[10px] font-medium whitespace-nowrap self-center mb-4">
+            <span className="text-orange-200 text-[10px] font-medium whitespace-nowrap self-center mb-4">
               শেষ হচ্ছে:
             </span>
-            {d && d.days > 0 && (
-              <>
-                <BannerUnit value={String(d.days)} label="দিন" />
-                <span className="text-violet-300 font-black text-base self-center mb-4">:</span>
-              </>
-            )}
             <BannerUnit value={hh} label="ঘণ্টা" />
-            <span className="text-violet-300 font-black text-base self-center mb-4">:</span>
+            <span className="text-orange-300 font-black text-base self-center mb-4">:</span>
             <BannerUnit value={mm} label="মিনিট" />
-            <span className="text-violet-300 font-black text-base self-center mb-4">:</span>
+            <span className="text-orange-300 font-black text-base self-center mb-4">:</span>
             <BannerUnit value={ss} label="সেকেন্ড" />
           </div>
         </div>
@@ -134,14 +123,6 @@ export default function CampaignTimer({ variant, className }: Props) {
       <div className={cn("flex flex-col items-start", className)}>
         <div className="flex items-center gap-0.5 mb-0.5">
           <Clock className="w-3 h-3 text-accent-gold shrink-0 mr-1" />
-          {d && d.days > 0 && (
-            <>
-              <span className="font-mono font-black text-white text-base leading-none bg-bg-primary/60 rounded px-1 py-0.5">
-                {String(d.days)}d
-              </span>
-              <span className="text-accent-gold font-black text-base mx-0.5">:</span>
-            </>
-          )}
           <span className="font-mono font-black text-white text-base leading-none bg-bg-primary/60 rounded px-1 py-0.5">{hh}</span>
           <span className="text-accent-gold font-black text-base mx-0.5">:</span>
           <span className="font-mono font-black text-white text-base leading-none bg-bg-primary/60 rounded px-1 py-0.5">{mm}</span>
@@ -211,12 +192,6 @@ export default function CampaignTimer({ variant, className }: Props) {
 
           {/* Digit blocks */}
           <div className="flex items-start gap-2 flex-wrap justify-center">
-            {d && d.days > 0 && (
-              <>
-                <BigBlock value={String(d.days)} label="দিন" />
-                <BigColon />
-              </>
-            )}
             <BigBlock value={hh} label="ঘণ্টা" />
             <BigColon />
             <BigBlock value={mm} label="মিনিট" />
@@ -233,43 +208,37 @@ export default function CampaignTimer({ variant, className }: Props) {
     return (
       <div
         className={cn(
-          "w-full rounded-xl overflow-hidden border-2 border-violet-500/60",
+          "w-full rounded-xl overflow-hidden border-2 border-orange-500/60",
           className
         )}
         style={{
-          background: "linear-gradient(135deg, rgba(109,40,217,0.15) 0%, rgba(124,58,237,0.1) 100%)",
+          background: "linear-gradient(135deg, rgba(180,83,9,0.15) 0%, rgba(217,119,6,0.1) 100%)",
         }}
       >
         {/* Top strip */}
         <div
           className="flex items-center gap-2 px-3 py-1.5"
-          style={{ background: "linear-gradient(90deg, #4c1d95, #6d28d9)" }}
+          style={{ background: "linear-gradient(90deg, #92400e, #b45309)" }}
         >
           <Zap className="w-3.5 h-3.5 text-yellow-300 shrink-0" />
           <span className="text-white font-black text-xs uppercase tracking-widest">
-            Early Bird Discount — সীমিত সময়!
+            Grand Opening Discount — সীমিত সময়!
           </span>
         </div>
 
         {/* Timer row */}
         <div className="flex items-center justify-between px-3 py-3 flex-wrap gap-2">
           <div className="flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-violet-400 shrink-0" />
+            <Clock className="w-4 h-4 text-orange-400 shrink-0" />
             <span className="text-text-secondary text-xs">অফার শেষ হচ্ছে:</span>
           </div>
           <div className="flex items-center gap-1">
-            {d && d.days > 0 && (
-              <>
-                <span className="font-mono font-black text-white bg-bg-primary rounded px-2 py-1 text-sm">{String(d.days)}d</span>
-                <span className="text-violet-400 font-black mx-0.5">:</span>
-              </>
-            )}
             <span className="font-mono font-black text-white bg-bg-primary rounded px-2 py-1 text-sm">{hh}</span>
-            <span className="text-violet-400 font-black mx-0.5">:</span>
+            <span className="text-orange-400 font-black mx-0.5">:</span>
             <span className="font-mono font-black text-white bg-bg-primary rounded px-2 py-1 text-sm">{mm}</span>
-            <span className="text-violet-400 font-black mx-0.5">:</span>
+            <span className="text-orange-400 font-black mx-0.5">:</span>
             <span
-              className="font-mono font-black text-violet-300 bg-bg-primary rounded px-2 py-1 text-sm"
+              className="font-mono font-black text-orange-300 bg-bg-primary rounded px-2 py-1 text-sm"
               style={{ animation: "digit-pop 1s ease-in-out infinite" }}
             >
               {ss}
