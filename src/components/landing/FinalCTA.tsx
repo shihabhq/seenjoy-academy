@@ -10,7 +10,7 @@ import { useCampaign } from "@/hooks/useCampaign";
 export default function FinalCTA() {
   const { price, isActive } = useCampaign();
   const discountPct = Math.round(((COURSE_INFO.originalPrice - price) / COURSE_INFO.originalPrice) * 100);
-  const discountLabel = "Grand Opening Discount";
+  const discountLabel = "Early Bird Discount";
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
