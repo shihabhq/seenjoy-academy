@@ -39,21 +39,21 @@ export default function CampaignTimer({ variant, className }: Props) {
           }}
         />
 
-        <div className="relative flex flex-col items-center px-3 py-2 gap-1">
+        <div className="relative flex flex-col items-center px-3 py-2.5 gap-1.5">
           {/* Row 1: Label + Price */}
           <div className="flex items-center justify-center gap-2 flex-wrap">
-            <div className="flex items-center gap-1">
-              <Flame className="w-3.5 h-3.5 text-violet-200 shrink-0" />
-              <span className="text-white font-black text-xs uppercase tracking-widest whitespace-nowrap">
+            <div className="flex items-center gap-1.5">
+              <Flame className="w-4 h-4 text-violet-200 shrink-0" />
+              <span className="text-white font-black text-sm uppercase tracking-widest whitespace-nowrap">
                 {CAMPAIGN_LABEL}
               </span>
             </div>
             <span className="text-violet-400/50 font-thin">|</span>
             <div className="flex items-center gap-1.5">
-              <span className="text-violet-200/70 text-xs line-through whitespace-nowrap">
+              <span className="text-violet-200/70 text-sm line-through whitespace-nowrap">
                 ৳{COURSE_INFO.originalPrice}
               </span>
-              <span className="bg-white text-violet-700 font-black text-xs px-2.5 py-0.5 rounded-full whitespace-nowrap shadow-lg">
+              <span className="bg-white text-violet-700 font-black text-sm px-3 py-0.5 rounded-full whitespace-nowrap shadow-lg">
                 ৳{CAMPAIGN_PRICE}
               </span>
             </div>
@@ -61,8 +61,8 @@ export default function CampaignTimer({ variant, className }: Props) {
 
           {/* Row 2: Deadline */}
           <div className="flex items-center gap-1.5">
-            <CalendarClock className="w-3.5 h-3.5 text-violet-200 shrink-0" />
-            <span className="text-violet-100 text-[10px] font-semibold whitespace-nowrap">
+            <CalendarClock className="w-4 h-4 text-violet-200 shrink-0" />
+            <span className="text-violet-100 text-sm font-bold whitespace-nowrap">
               অফার শেষ: {DEADLINE_TEXT}
             </span>
           </div>
